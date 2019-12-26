@@ -1,0 +1,209 @@
+{
+  "page": 1,
+  "total_results": 259,
+  "total_pages": 13,
+  "results": [
+    {
+      "original_name": "The Mandalorian",
+      "genre_ids": [
+        10759,
+        10765
+      ],
+      "name": "The Mandalorian",
+      "popularity": 494.012,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 322,
+      "first_air_date": "2019-11-12",
+      "backdrop_path": "/o7qi2v4uWQ8bZ1tW3KI0Ztn2epk.jpg",
+      "original_language": "en",
+      "id": 82856,
+      "vote_average": 7.9,
+      "overview": "",
+      "poster_path": "/BbNvKCuEF4SRzFXR16aK6ISFtR.jpg"
+    },
+    {
+      "original_name": "His Dark Materials",
+      "genre_ids": [
+        18,
+        10765
+      ],
+      "name": "His Dark Materials",
+      "popularity": 180.089,
+      "origin_country": [
+        "GB"
+      ],
+      "vote_count": 123,
+      "first_air_date": "2019-11-03",
+      "backdrop_path": "/9yKCJTOh9m3Lol2RY3kw99QPH6x.jpg",
+      "original_language": "en",
+      "id": 68507,
+      "vote_average": 7.5,
+      "overview": "",
+      "poster_path": "/xOjRNnQw5hqR1EULJ2iHkGwJVA4.jpg"
+    },
+    {
+      "original_name": "Shameless",
+      "genre_ids": [
+        35,
+        18
+      ],
+      "name": "Shameless",
+      "popularity": 104.404,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 934,
+      "first_air_date": "2011-01-09",
+      "backdrop_path": "/1ccgQ6IJyEc8UHPtGeFFeRqMVnc.jpg",
+      "original_language": "en",
+      "id": 34307,
+      "vote_average": 7.9,
+      "overview": "",
+      "poster_path": "/7eDvhKCu7jkkKQI37nwYWvXJTzl.jpg"
+    },
+    {
+      "original_name": "Mr. Robot",
+      "genre_ids": [
+        80,
+        18
+      ],
+      "name": "Mr. Robot",
+      "popularity": 64.665,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 1639,
+      "first_air_date": "2015-05-27",
+      "backdrop_path": "/4n0TZfTUSUELqRrOA8sZKWs9bWU.jpg",
+      "original_language": "en",
+      "id": 62560,
+      "vote_average": 7.9,
+      "overview": "",
+      "poster_path": "/esN3gWb1P091xExLddD2nh4zmi3.jpg"
+    },
+    {
+      "original_name": "Ray Donovan",
+      "genre_ids": [
+        18
+      ],
+      "name": "Ray Donovan",
+      "popularity": 58.838,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 409,
+      "first_air_date": "2013-06-30",
+      "backdrop_path": "/ijX8tWeMBMPwEPKNpSavyd9334r.jpg",
+      "original_language": "en",
+      "id": 1423,
+      "vote_average": 7.4,
+      "overview": "",
+      "poster_path": "/v937VN30n6WKICNUw02n8Brjbvk.jpg"
+    },
+    {
+      "original_name": "Harley Quinn",
+      "genre_ids": [
+        16,
+        35,
+        80
+      ],
+      "name": "Harley Quinn",
+      "popularity": 50.53,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 23,
+      "first_air_date": "2019-11-29",
+      "backdrop_path": "/29cFVNndxhmE5mmhEmYm4G32HHm.jpg",
+      "original_language": "en",
+      "id": 74440,
+      "vote_average": 8.4,
+      "overview": "",
+      "poster_path": "/2qZwqQzm9GfxamposgXrX7dLKcF.jpg"
+    },
+    {
+      "original_name": "Sesame Street",
+      "genre_ids": [
+        16,
+        35,
+        10751
+      ],
+      "name": "Sesame Street",
+      "popularity": 44.361,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 95,
+      "first_air_date": "1969-11-10",
+      "backdrop_path": "/zIbkxRfoDXj9cOcQSFjB9yDHwj.jpg",
+      "original_language": "en",
+      "id": 502,
+      "vote_average": 7.2,
+      "overview": "",
+      "poster_path": "/aM2VEnR05ssgmafDGNFngJWyOrC.jpg"
+    },
+    {
+      "original_name": "Servant",
+      "genre_ids": [
+        18
+      ],
+      "name": "Servant",
+      "popularity": 46.376,
+      "origin_country": [
+        "US"
+      ],
+      "vote_count": 22,
+      "first_air_date": "2019-11-28",
+      "backdrop_path": "/digxxEISFHSPOLpBFbZnQqm9nhD.jpg",
+      "original_language": "en",
+      "id": 88055,
+      "vote_average": 8,
+      "overview": "",
+      "poster_path": "/n5iDow3TLI74e0W41363ieKucei.jpg"
+    },
+    {
+      "original_name": "僕のヒーローアカデミア",
+      "id": 65930,
+      "name": "僕のヒーローアカデミア",
+      "popularity": 40.967,
+      "vote_count": 207,
+      "vote_average": 8,
+      "first_air_date": "2016-04-03",
+      "poster_path": "/lr19Qj2kP7XIicmbMMKTZ6aoQFL.jpg",
+      "genre_ids": [
+        10759,
+        16,
+        35
+      ],
+      "original_language": "ja",
+      "backdrop_path": "/r1jOpRyqP5pKkvZvaiCXVJ5RYOa.jpg",
+      "overview": "",
+      "origin_country": [
+        "JP"
+      ]
+    },
+    {
+      "original_name": "Lost in Space",
+      "id": 75758,
+      "name": "Lost in Space",
+      "popularity": 45.374,
+      "vote_count": 263,
+      "vote_average": 6.9,
+      "first_air_date": "2018-04-13",
+      "poster_path": "/y8NJnTXzb4rio9uvVYFVrXEMofU.jpg",
+      "genre_ids": [
+        10765,
+        10759,
+        18
+      ],
+      "original_language": "en",
+      "backdrop_path": "/tJAGIHi7tzyVwOhfuoLkJPubj3b.jpg",
+      "overview": "",
+      "origin_country": [
+        "US"
+      ]
+    }
+  ]
+}

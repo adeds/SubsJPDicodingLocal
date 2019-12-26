@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_movie"
+        android:checked="true"
+        android:icon="@drawable/ic_movie_white"
+        android:title="@string/movie_title" />
+    <item
+        android:id="@+id/action_tv"
+        android:icon="@drawable/ic_tv_white"
+        android:title="@string/tv_title" />
+</menu>

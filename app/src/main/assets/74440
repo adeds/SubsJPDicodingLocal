@@ -1,0 +1,137 @@
+{
+  "backdrop_path": "/29cFVNndxhmE5mmhEmYm4G32HHm.jpg",
+  "created_by": [
+    {
+      "id": 1252066,
+      "credit_id": "5ac8520992514162a803214a",
+      "name": "Patrick Schumacker",
+      "gender": 0,
+      "profile_path": null
+    },
+    {
+      "id": 1252067,
+      "credit_id": "5ac85225c3a36834de034f41",
+      "name": "Justin Halpern",
+      "gender": 0,
+      "profile_path": null
+    },
+    {
+      "id": 64746,
+      "credit_id": "5ac852330e0a26497a039ef2",
+      "name": "Dean Lorey",
+      "gender": 2,
+      "profile_path": null
+    }
+  ],
+  "episode_run_time": [
+    23
+  ],
+  "first_air_date": "2019-11-29",
+  "genres": [
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 80,
+      "name": "Crime"
+    }
+  ],
+  "homepage": "https://www.dcuniverse.com/videos/harley-quinn/193",
+  "id": 74440,
+  "in_production": true,
+  "languages": [
+    "en"
+  ],
+  "last_air_date": "2019-12-20",
+  "last_episode_to_air": {
+    "air_date": "2019-12-20",
+    "episode_number": 4,
+    "id": 2014912,
+    "name": "Finding Mr. Right",
+    "overview": "In search of a nemesis, Harley goes after Batman, but ends up with an adolescent Robin, making her the laughing stock of the criminal underworld.",
+    "production_code": "",
+    "season_number": 1,
+    "show_id": 74440,
+    "still_path": "/pnod1diLLRYlIAi3vqiauU91YvD.jpg",
+    "vote_average": 7.0,
+    "vote_count": 2
+  },
+  "name": "Harley Quinn",
+  "next_episode_to_air": {
+    "air_date": "2019-12-27",
+    "episode_number": 5,
+    "id": 2020431,
+    "name": "Episode 5",
+    "overview": "",
+    "production_code": "",
+    "season_number": 1,
+    "show_id": 74440,
+    "still_path": null,
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  "networks": [
+    {
+      "name": "DC Universe",
+      "id": 2243,
+      "logo_path": "/eOL4PkiC0zkDpxKFQhBnmCtwx5p.png",
+      "origin_country": "US"
+    }
+  ],
+  "number_of_episodes": 5,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "US"
+  ],
+  "original_language": "en",
+  "original_name": "Harley Quinn",
+  "overview": "Harley Quinn has finally broken things off once and for all with the Joker and attempts to make it on her own as the criminal Queenpin of Gotham City.",
+  "popularity": 50.53,
+  "poster_path": "/2qZwqQzm9GfxamposgXrX7dLKcF.jpg",
+  "production_companies": [
+    {
+      "id": 9993,
+      "logo_path": "/2Tc1P3Ac8M479naPp1kYT3izLS5.png",
+      "name": "DC Entertainment",
+      "origin_country": "US"
+    },
+    {
+      "id": 2785,
+      "logo_path": "/l5zW8jjmQOCx2dFmvnmbYmqoBmL.png",
+      "name": "Warner Bros. Animation",
+      "origin_country": "US"
+    },
+    {
+      "id": 109784,
+      "logo_path": null,
+      "name": "Yes, Norman Productions",
+      "origin_country": "US"
+    },
+    {
+      "id": 86616,
+      "logo_path": null,
+      "name": "Ehsugadee Productions",
+      "origin_country": ""
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2019-11-29",
+      "episode_count": 5,
+      "id": 93845,
+      "name": "Season 1",
+      "overview": "",
+      "poster_path": "/2qZwqQzm9GfxamposgXrX7dLKcF.jpg",
+      "season_number": 1
+    }
+  ],
+  "status": "Returning Series",
+  "type": "Scripted",
+  "vote_average": 8.4,
+  "vote_count": 23
+}

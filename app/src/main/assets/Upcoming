@@ -1,0 +1,210 @@
+{
+  "results": [
+    {
+      "popularity": 608.26,
+      "vote_count": 614,
+      "video": false,
+      "poster_path": "/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
+      "id": 181812,
+      "adult": false,
+      "backdrop_path": "/dCB7d4l0mfpsISZvr6aPE2z5QF6.jpg",
+      "original_language": "en",
+      "original_title": "Star Wars: The Rise of Skywalker",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "title": "Star Wars: The Rise of Skywalker",
+      "vote_average": 6.8,
+      "overview": "",
+      "release_date": "2019-12-18"
+    },
+    {
+      "popularity": 242.153,
+      "vote_count": 402,
+      "video": false,
+      "poster_path": "/jyw8VKYEiM1UDzPB7NsisUgBeJ8.jpg",
+      "id": 512200,
+      "adult": false,
+      "backdrop_path": "/zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg",
+      "original_language": "en",
+      "original_title": "Jumanji: The Next Level",
+      "genre_ids": [
+        28,
+        12,
+        35,
+        14
+      ],
+      "title": "Jumanji: The Next Level",
+      "vote_average": 6.7,
+      "overview": "",
+      "release_date": "2019-12-04"
+    },
+    {
+      "popularity": 183.526,
+      "vote_count": 1150,
+      "video": false,
+      "poster_path": "/pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg",
+      "id": 330457,
+      "adult": false,
+      "backdrop_path": "/xJWPZIYOEFIjZpBL7SVBGnzRYXp.jpg",
+      "original_language": "en",
+      "original_title": "Frozen II",
+      "genre_ids": [
+        12,
+        16,
+        10402,
+        10751
+      ],
+      "title": "Frozen II",
+      "vote_average": 7,
+      "overview": "",
+      "release_date": "2019-11-20"
+    },
+    {
+      "popularity": 139.93,
+      "vote_count": 57,
+      "video": false,
+      "poster_path": "/MBiKqTsouYqAACLYNDadsjhhC0.jpg",
+      "id": 486589,
+      "adult": false,
+      "backdrop_path": "/bga3i5jcejBekr2FCGJga1fYCh.jpg",
+      "original_language": "en",
+      "original_title": "Red Shoes and the Seven Dwarfs",
+      "genre_ids": [
+        16,
+        10749
+      ],
+      "title": "Red Shoes and the Seven Dwarfs",
+      "vote_average": 6.1,
+      "overview": "",
+      "release_date": "2019-07-25"
+    },
+    {
+      "popularity": 308.809,
+      "vote_count": 29,
+      "video": false,
+      "poster_path": "/mAWBfTDAmfpvQGMVFuzuVl49N1P.jpg",
+      "id": 449924,
+      "adult": false,
+      "backdrop_path": "/ekP6EVxL81lZ4ivcqPsoZ72rY0h.jpg",
+      "original_language": "cn",
+      "original_title": "葉問4",
+      "genre_ids": [
+        28,
+        18,
+        36
+      ],
+      "title": "葉問4",
+      "vote_average": 5.7,
+      "overview": "",
+      "release_date": "2019-12-20"
+    },
+    {
+      "popularity": 73.075,
+      "id": 546554,
+      "video": false,
+      "vote_count": 767,
+      "vote_average": 7.9,
+      "title": "Knives Out",
+      "release_date": "2019-11-27",
+      "original_language": "en",
+      "original_title": "Knives Out",
+      "genre_ids": [
+        9648,
+        53,
+        35
+      ],
+      "backdrop_path": "/AbRYlvwAKHs0YuyNO6NX9ofq4l6.jpg",
+      "adult": false,
+      "overview": "",
+      "poster_path": "/pThyQovXQrw2m0s9x82twj48Jq4.jpg"
+    },
+    {
+      "popularity": 68.982,
+      "vote_count": 1854,
+      "video": false,
+      "poster_path": "/tcmj4YQ6p79OD8ECpRAbV8Yjk0c.jpg",
+      "id": 496243,
+      "adult": false,
+      "backdrop_path": "/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg",
+      "original_language": "ko",
+      "original_title": "기생충",
+      "genre_ids": [
+        35,
+        53
+      ],
+      "title": "Parasite",
+      "vote_average": 8.6,
+      "overview": "Semua menganggur, keluarga Ki-taek memiliki minat khusus pada Taman kaya dan glamor untuk mata pencaharian mereka sampai mereka terjerat dalam insiden tak terduga.",
+      "release_date": "2019-05-30"
+    },
+    {
+      "popularity": 49.351,
+      "vote_count": 7,
+      "video": false,
+      "poster_path": "/gbPfvwBqbiHpQkYZQvVwB6MVauV.jpg",
+      "id": 525661,
+      "adult": false,
+      "backdrop_path": "/ghQrKrcEpAlkzBuNoOCSxHQXWqw.jpg",
+      "original_language": "en",
+      "original_title": "Bombshell",
+      "genre_ids": [
+        18
+      ],
+      "title": "Bombshell",
+      "vote_average": 6.3,
+      "overview": "",
+      "release_date": "2019-12-13"
+    },
+    {
+      "popularity": 58.173,
+      "vote_count": 14,
+      "video": false,
+      "poster_path": "/9zvjgr1v8pwFYQNHZTtnKNQUWmw.jpg",
+      "id": 536869,
+      "adult": false,
+      "backdrop_path": "/4F8M02OjkfDIIBg36R5ZluLK2nU.jpg",
+      "original_language": "en",
+      "original_title": "Cats",
+      "genre_ids": [
+        35,
+        18,
+        14,
+        10402
+      ],
+      "title": "Cats",
+      "vote_average": 5.2,
+      "overview": "",
+      "release_date": "2019-11-26"
+    },
+    {
+      "popularity": 61.737,
+      "vote_count": 3,
+      "video": false,
+      "poster_path": "/z52xI0MnoX1rqySFJYnmBqHbXRn.jpg",
+      "id": 431693,
+      "adult": false,
+      "backdrop_path": "/nZ1N5tDpoNm8UJBmWGoTZCRiDoQ.jpg",
+      "original_language": "en",
+      "original_title": "Spies in Disguise",
+      "genre_ids": [
+        28,
+        12,
+        16
+      ],
+      "title": "Spies in Disguise",
+      "vote_average": 8,
+      "overview": "",
+      "release_date": "2019-12-24"
+    }
+  ],
+  "page": 1,
+  "total_results": 204,
+  "dates": {
+    "maximum": "2020-01-12",
+    "minimum": "2019-12-28"
+  },
+  "total_pages": 11
+}
