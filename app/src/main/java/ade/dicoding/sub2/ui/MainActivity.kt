@@ -3,9 +3,9 @@ package ade.dicoding.sub2.ui
 import ade.dicoding.sub2.R
 import ade.dicoding.sub2.ui.movies.MovieFragment
 import ade.dicoding.sub2.ui.tvshow.TvFragment
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView

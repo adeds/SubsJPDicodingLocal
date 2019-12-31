@@ -6,7 +6,7 @@ import ade.dicoding.sub2.util.FakeDummy
 import android.app.Application
 
 object Injection {
-    fun provideRepository(application: Application): TMDBRepository? {
+    fun provideRepository(application: Application?): TMDBRepository? {
         val remoteRepository = RemoteRepository.getInstance(FakeDummy(application))
         return TMDBRepository.getInstance(remoteRepository)
     }

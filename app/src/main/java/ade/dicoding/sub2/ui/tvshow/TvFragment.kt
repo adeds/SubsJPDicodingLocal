@@ -36,7 +36,7 @@ class TvFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance(activity!!.application)
+            val factory = ViewModelFactory.getInstance(activity?.application)
             viewModel = ViewModelProviders.of(activity!!, factory).get(TVViewModel::class.java)
             tivies = mutableListOf()
             initAdapter()

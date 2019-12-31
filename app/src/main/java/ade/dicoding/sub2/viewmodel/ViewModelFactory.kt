@@ -30,7 +30,7 @@ class ViewModelFactory private constructor(academyRepository: TMDBRepository) :
         @Volatile
         private var INSTANCE: ViewModelFactory? = null
 
-        fun getInstance(application: Application): ViewModelFactory? {
+        fun getInstance(application: Application?): ViewModelFactory? {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class.java) {
                     if (INSTANCE == null) {

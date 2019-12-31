@@ -7,8 +7,8 @@ import ade.dicoding.sub2.data.model.Tivies
 import androidx.lifecycle.LiveData
 
 interface TMDBDataSource {
-    fun movies():LiveData<Movies?>
-    fun movieDetail(id:Int): LiveData<MovieDetail?>
+    fun movies(): LiveData<Movies?>
+    fun movieDetail(id: Int): LiveData<MovieDetail?>
     fun tVShow(): LiveData<Tivies?>
-    fun tVDetail(id:Int): LiveData<TVDetail?>
+    fun tVDetail(id: Int): LiveData<TVDetail?>
 }

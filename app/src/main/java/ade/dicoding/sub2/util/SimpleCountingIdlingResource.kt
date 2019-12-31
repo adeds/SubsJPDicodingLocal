@@ -31,7 +31,7 @@ class SimpleCountingIdlingResource(resourceName: String?) :
         val counterVal: Int = counter.decrementAndGet()
         if (counterVal == 0) { // we've gone from non-zero to zero. That means we're idle now! Tell espresso.
             if (null != resourceCallback) {
-                resourceCallback!!.onTransitionToIdle()
+                resourceCallback?.onTransitionToIdle()
             }
         }
         require(counterVal >= 0) { "Counter has been corrupted!" }

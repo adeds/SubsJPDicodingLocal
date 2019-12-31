@@ -5,6 +5,7 @@ import ade.dicoding.sub2.data.model.Movies
 import ade.dicoding.sub2.ui.detail.DetailActivity
 import ade.dicoding.sub2.util.POSTER_PATH
 import ade.dicoding.sub2.util.loadImageURL
+import ade.dicoding.sub2.util.orFalse
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
@@ -38,7 +39,7 @@ class MovieAdapter(
                 holder.tvRate.text = String.format("Rating %s", popularity)
                 holder.itemView.setOnClickListener { v: View? ->
                     DetailActivity.start(
-                        activity!!,
+                        activity,
                         item.title ?: "",
                         true,
                         id
@@ -63,8 +64,11 @@ class MovieAdapter(
                     val filteredList = mutableListOf<Movies.Result>()
                     contents?.filter {
                         when {
-                            it.title!!.contains(charString, true) ||
-                                    it.overview!!.contains(charString, true) -> filteredList.add(it)
+                            it.title?.contains(charString, true).orFalse() ||
+                                    it.overview?.contains(
+                                        charString,
+                                        true
+                                    ).orFalse() -> filteredList.add(it)
                             else -> false
                         }
                     }

@@ -18,8 +18,8 @@ class SingleFragmentActivity : AppCompatActivity() {
         val params = FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT,
                 Gravity.CENTER)
-        content.setLayoutParams(params)
-        content.setId(R.id.container)
+        content.layoutParams = params
+        content.id = R.id.container
         setContentView(content)
     }
 

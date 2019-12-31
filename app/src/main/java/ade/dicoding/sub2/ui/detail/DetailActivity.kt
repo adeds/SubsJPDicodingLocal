@@ -38,7 +38,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getTvDetail() {
-        viewModel.movie(idContent).observe(this){response->
+        viewModel.movie(idContent).observe(this) { response ->
             response?.apply {
                 dtl_img.loadImageURL(POSTER_PATH + posterPath)
                 dtl_title.text = originalTitle
@@ -58,7 +58,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getMovieDetail() {
-        viewModel.tv(idContent).observe(this){response->
+        viewModel.tv(idContent).observe(this) { response ->
             response?.apply {
                 dtl_img.loadImageURL(POSTER_PATH + posterPath)
                 dtl_title.text = originalName
@@ -87,12 +87,12 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_ID_CONTENT = "EXTRA_ID_CONTENT"
         const val EXTRA_IS_MOVIE = "EXTRA_IS_MOVIE"
         fun start(
-            activity: Activity,
+            activity: Activity?,
             item: String,
             movie: Boolean,
             id: Int?
         ) {
-            activity.startActivity<DetailActivity>(
+            activity?.startActivity<DetailActivity>(
                 EXTRA_ITEM to item,
                 EXTRA_ID_CONTENT to id,
                 EXTRA_IS_MOVIE to movie

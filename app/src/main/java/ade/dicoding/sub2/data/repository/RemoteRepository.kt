@@ -6,10 +6,10 @@ import ade.dicoding.sub2.data.model.TVDetail
 import ade.dicoding.sub2.data.model.Tivies
 import ade.dicoding.sub2.util.EspressoIdlingResource
 import ade.dicoding.sub2.util.FakeDummy
+import ade.dicoding.sub2.util.SERVICE_LATENCY_IN_MILLIS
 import android.os.Handler
 
 class RemoteRepository(private val jsonHelper: FakeDummy) {
-    private val SERVICE_LATENCY_IN_MILLIS: Long = 2000
     fun getMovies(callback: LoadMoviesCallback) {
         EspressoIdlingResource.increment()
         Handler().postDelayed(

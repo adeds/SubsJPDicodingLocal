@@ -5,6 +5,7 @@ import ade.dicoding.sub2.data.model.Tivies
 import ade.dicoding.sub2.ui.detail.DetailActivity
 import ade.dicoding.sub2.util.POSTER_PATH
 import ade.dicoding.sub2.util.loadImageURL
+import ade.dicoding.sub2.util.orFalse
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,6 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.items_content.view.*
-import org.jetbrains.anko.toast
 
 class TVShowAdapter(
     private val activity: Activity?,
@@ -37,7 +37,7 @@ class TVShowAdapter(
                 holder.tvDate.text = String.format("Release: %s", firstAirDate)
                 holder.tvRate.text = String.format("Rating %s", popularity)
                 holder.itemView.setOnClickListener { v: View? ->
-                    DetailActivity.start(activity!!, item.originalName ?: "", false, id)
+                    DetailActivity.start(activity, item.originalName ?: "", false, id)
 //                    activity?.toast(originalName.toString())
                 }
                 holder.imgPoster.loadImageURL(POSTER_PATH + posterPath)
@@ -58,8 +58,11 @@ class TVShowAdapter(
                     val filteredList = mutableListOf<Tivies.Result>()
                     contents?.filter {
                         when {
-                            it.originalName!!.contains(charString, true) ||
-                                    it.overview!!.contains(charString, true) -> filteredList.add(it)
+                            it.originalName?.contains(charString, true).orFalse() ||
+                                    it.overview?.contains(
+                                        charString,
+                                        true
+                                    ).orFalse() -> filteredList.add(it)
                             else -> false
                         }
                     }

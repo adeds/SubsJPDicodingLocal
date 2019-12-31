@@ -15,3 +15,7 @@ fun ImageView.loadImageURL(link: String?) {
         .into(this)
 }
 
+fun Boolean?.orFalse(): Boolean {
+    return this ?: false
+}
+

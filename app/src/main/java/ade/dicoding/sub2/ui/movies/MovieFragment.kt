@@ -34,7 +34,7 @@ class MovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance(activity!!.application)
+            val factory = ViewModelFactory.getInstance(activity?.application)
             viewModel = ViewModelProviders.of(activity!!, factory).get(MoviesViewModel::class.java)
             movies = mutableListOf()
             initAdapter()
@@ -53,6 +53,7 @@ class MovieFragment : Fragment() {
 
         }
     }
+
     private fun setSearching() {
         et_search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
