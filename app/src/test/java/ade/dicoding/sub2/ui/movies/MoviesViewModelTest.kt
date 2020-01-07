@@ -1,17 +1,22 @@
 package ade.dicoding.sub2.ui.movies
 
-import ade.dicoding.sub2.data.model.Movies
+import ade.dicoding.sub2.data.local.entity.MoviesEntity
 import ade.dicoding.sub2.data.repository.TMDBRepository
+import ade.dicoding.sub2.helper.SortUtils.NEWEST
 import ade.dicoding.sub2.util.FakeDummy
+import ade.dicoding.sub2.vo.Resource
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.eq
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
 
@@ -25,8 +30,8 @@ class MoviesViewModelTest {
     private lateinit var repo: TMDBRepository
     private val movies = FakeDummy().generateMovies()
 
-    @Mock
-    private lateinit var observer: Observer<Movies?>
+//    @Mock
+//    private lateinit var observer: Observer<Resource<List<MoviesEntity>>?>
 
     @Before
     fun setUp() {
@@ -36,11 +41,14 @@ class MoviesViewModelTest {
 
     @Test
     fun getMovie() {
-        val mockMovies: MutableLiveData<Movies?> = MutableLiveData()
-        mockMovies.value = movies
-        Mockito.`when`(repo.movies()).thenReturn(mockMovies)
+        val resource: Resource<List<MoviesEntity>> = Resource.success(movies)
+        val dummyCourses: MutableLiveData<Resource<List<MoviesEntity>>> = MutableLiveData()
+        dummyCourses.value = resource
 
-        viewModel.movies().observeForever(observer)
-        verify(observer).onChanged(movies)
+        Mockito.`when`(repo.movies()).thenReturn(dummyCourses)
+        val observer = mock(Observer::class.java) as Observer<Resource<List<MoviesEntity>>>
+        viewModel.setUsername(NEWEST)
+        viewModel.movies.observeForever(observer)
+        verify(observer).onChanged(resource)
     }
 }

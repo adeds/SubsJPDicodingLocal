@@ -2,8 +2,11 @@ package ade.dicoding.sub2.ui.movies
 
 
 import ade.dicoding.sub2.R
-import ade.dicoding.sub2.data.model.Movies
+import ade.dicoding.sub2.data.local.entity.MoviesEntity
+import ade.dicoding.sub2.ui.detail.DetailActivity
+import ade.dicoding.sub2.util.gone
 import ade.dicoding.sub2.viewmodel.ViewModelFactory
+import ade.dicoding.sub2.vo.Status
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,11 +20,11 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_movie.*
 
-class MovieFragment : Fragment() {
+class MovieFragment : Fragment(){
 
     private lateinit var viewModel: MoviesViewModel
     private lateinit var adapter: MovieAdapter
-    private lateinit var movies: MutableList<Movies.Result>
+    private lateinit var movies: MutableList<MoviesEntity>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,20 +37,42 @@ class MovieFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (activity != null) {
+            coll_lay.gone()
             val factory = ViewModelFactory.getInstance(activity?.application)
             viewModel = ViewModelProviders.of(activity!!, factory).get(MoviesViewModel::class.java)
             movies = mutableListOf()
             initAdapter()
             setSearching()
-            viewModel.movies().observe(this) { response ->
-                Log.e("result", response.toString())
-                movies.clear()
-                response?.apply {
-                    if (!results.isNullOrEmpty()) {
-                        movies.addAll(results as MutableList<Movies.Result>)
+            viewModel.setUsername("test")
+            viewModel.movies.observe(this) { response ->
+                Log.e("response", "$response")
+                if (response != null) {
+                    when (response.status) {
+                        Status.LOADING -> {
+
+                        }
+                        Status.ERROR -> {
+
+                        }
+                        Status.SUCCESS -> {
+                            movies.clear()
+                            response.apply {
+                                if (!data.isNullOrEmpty()) {
+                                    movies.addAll(data as MutableList<MoviesEntity>)
+                                }
+
+                            }
+                            adapter.notifyDataSetChanged()
+                        }
                     }
                 }
-                adapter.notifyDataSetChanged()
+//                movies.clear()
+//                response?.apply {
+//                    if (!bi.isNullOrEmpty()) {
+//                        movies.addAll(results as MutableList<Movies.Result>)
+//                    }
+//                }
+//                adapter.notifyDataSetChanged()
 
             }
 

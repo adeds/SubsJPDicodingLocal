@@ -50,8 +50,6 @@ class DetailActivityTest {
         onView(withId(R.id.dtl_desc)).check(matches(isDisplayed()))
         onView(withId(R.id.dtl_img)).check(matches(isDisplayed()))
         onView(withId(R.id.dtl_title)).check(matches(isDisplayed()))
-//        Espresso.onView(ViewMatchers.withText("Frozen II"))
-//            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
         onView(
             allOf(
                 instanceOf(TextView::class.java),

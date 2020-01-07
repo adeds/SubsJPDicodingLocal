@@ -1,7 +1,7 @@
 package ade.dicoding.sub2.ui.movies
 
 import ade.dicoding.sub2.R
-import ade.dicoding.sub2.data.model.Movies
+import ade.dicoding.sub2.data.local.entity.MoviesEntity
 import ade.dicoding.sub2.ui.detail.DetailActivity
 import ade.dicoding.sub2.util.POSTER_PATH
 import ade.dicoding.sub2.util.loadImageURL
@@ -14,14 +14,12 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.items_content.view.*
-import org.jetbrains.anko.toast
 
 class MovieAdapter(
     private val activity: Activity?,
-    var contents: MutableList<Movies.Result>?
-) :
+    var contents: MutableList<MoviesEntity>?) :
     RecyclerView.Adapter<MovieAdapter.AcademyViewHolder>(), Filterable {
-    var itemsFiltered: MutableList<Movies.Result>? = contents
+    var itemsFiltered: MutableList<MoviesEntity>? = contents
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AcademyViewHolder {
         val view =
@@ -38,13 +36,7 @@ class MovieAdapter(
                 holder.tvDate.text = String.format("Release: %s", releaseDate)
                 holder.tvRate.text = String.format("Rating %s", popularity)
                 holder.itemView.setOnClickListener { v: View? ->
-                    DetailActivity.start(
-                        activity,
-                        item.title ?: "",
-                        true,
-                        id
-                    )
-                    activity?.toast(title.toString())
+                    DetailActivity.startMovie(activity, item)
                 }
                 holder.imgPoster.loadImageURL(POSTER_PATH + posterPath)
             }
@@ -61,7 +53,7 @@ class MovieAdapter(
                 if (charString.isEmpty()) {
                     itemsFiltered = contents
                 } else {
-                    val filteredList = mutableListOf<Movies.Result>()
+                    val filteredList = mutableListOf<MoviesEntity>()
                     contents?.filter {
                         when {
                             it.title?.contains(charString, true).orFalse() ||
@@ -80,7 +72,7 @@ class MovieAdapter(
             }
 
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-                itemsFiltered = p1?.values as MutableList<Movies.Result>
+                itemsFiltered = p1?.values as MutableList<MoviesEntity>
                 notifyDataSetChanged()
             }
 

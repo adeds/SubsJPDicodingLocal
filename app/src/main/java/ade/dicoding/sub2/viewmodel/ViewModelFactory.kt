@@ -3,27 +3,35 @@ package ade.dicoding.sub2.viewmodel
 import ade.dicoding.sub2.data.repository.TMDBRepository
 import ade.dicoding.sub2.di.Injection
 import ade.dicoding.sub2.ui.detail.DetailViewModel
+import ade.dicoding.sub2.ui.favorites.movie.MoviesFavViewModel
+import ade.dicoding.sub2.ui.favorites.tivshow.TVFavViewModel
 import ade.dicoding.sub2.ui.movies.MoviesViewModel
 import ade.dicoding.sub2.ui.tvshow.TVViewModel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider.NewInstanceFactory
 
-class ViewModelFactory private constructor(academyRepository: TMDBRepository) :
+class ViewModelFactory private constructor(private val mAcademyRepository: TMDBRepository) :
     NewInstanceFactory() {
-    private val mAcademyRepository: TMDBRepository
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MoviesViewModel::class.java)) {
-            return MoviesViewModel(mAcademyRepository) as T
-        } else if (modelClass.isAssignableFrom(TVViewModel::class.java)) {
-            return TVViewModel(mAcademyRepository) as T
-        } else if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
-            return DetailViewModel(mAcademyRepository) as T
+        return when {
+            modelClass.isAssignableFrom(MoviesViewModel::class.java) -> {
+                MoviesViewModel(mAcademyRepository) as T
+            }
+            modelClass.isAssignableFrom(TVViewModel::class.java) -> {
+                TVViewModel(mAcademyRepository) as T
+            }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(mAcademyRepository) as T
+            }
+            modelClass.isAssignableFrom(MoviesFavViewModel::class.java) -> {
+                MoviesFavViewModel(mAcademyRepository) as T
+            }
+            modelClass.isAssignableFrom(TVFavViewModel::class.java) -> {
+                TVFavViewModel(mAcademyRepository) as T
+            }
+            else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
-//        } else if (modelClass.isAssignableFrom(CourseReaderViewModel::class.java)) {
-//            return CourseReaderViewModel(mAcademyRepository) as T
-//        }
-        throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 
     companion object {
@@ -43,7 +51,4 @@ class ViewModelFactory private constructor(academyRepository: TMDBRepository) :
         }
     }
 
-    init {
-        mAcademyRepository = academyRepository
-    }
 }

@@ -1,6 +1,7 @@
 package ade.dicoding.sub2.ui.tvshow
 
 import ade.dicoding.sub2.R
+import ade.dicoding.sub2.data.local.entity.TiviesEntity
 import ade.dicoding.sub2.data.model.Tivies
 import ade.dicoding.sub2.ui.detail.DetailActivity
 import ade.dicoding.sub2.util.POSTER_PATH
@@ -17,10 +18,10 @@ import kotlinx.android.synthetic.main.items_content.view.*
 
 class TVShowAdapter(
     private val activity: Activity?,
-    var contents: MutableList<Tivies.Result>?
+    var contents: MutableList<TiviesEntity>?
 ) :
     RecyclerView.Adapter<TVShowAdapter.AcademyViewHolder>(), Filterable {
-    var itemsFiltered: MutableList<Tivies.Result>? = contents
+    var itemsFiltered: MutableList<TiviesEntity>? = contents
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AcademyViewHolder {
         val view =
@@ -32,12 +33,12 @@ class TVShowAdapter(
         val item = itemsFiltered?.get(position)
         if (item != null)
             item.apply {
-                holder.tvTitle.text = originalName
+                holder.tvTitle.text = title
                 holder.tvDescription.text = overview
                 holder.tvDate.text = String.format("Release: %s", firstAirDate)
                 holder.tvRate.text = String.format("Rating %s", popularity)
                 holder.itemView.setOnClickListener { v: View? ->
-                    DetailActivity.start(activity, item.originalName ?: "", false, id)
+                    DetailActivity.start(activity, item.title ?: "", false, id)
 //                    activity?.toast(originalName.toString())
                 }
                 holder.imgPoster.loadImageURL(POSTER_PATH + posterPath)
@@ -55,10 +56,10 @@ class TVShowAdapter(
                 if (charString.isEmpty()) {
                     itemsFiltered = contents
                 } else {
-                    val filteredList = mutableListOf<Tivies.Result>()
+                    val filteredList = mutableListOf<TiviesEntity>()
                     contents?.filter {
                         when {
-                            it.originalName?.contains(charString, true).orFalse() ||
+                            it.title?.contains(charString, true).orFalse() ||
                                     it.overview?.contains(
                                         charString,
                                         true
@@ -74,7 +75,7 @@ class TVShowAdapter(
             }
 
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-                itemsFiltered = p1?.values as MutableList<Tivies.Result>
+                itemsFiltered = p1?.values as MutableList<TiviesEntity>
                 notifyDataSetChanged()
             }
 

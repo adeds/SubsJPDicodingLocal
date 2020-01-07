@@ -1,26 +1,249 @@
 package ade.dicoding.sub2.util
 
+import ade.dicoding.sub2.data.local.entity.MovieDetailEntity
+import ade.dicoding.sub2.data.local.entity.MoviesEntity
+import ade.dicoding.sub2.data.local.entity.TVDetailEntity
+import ade.dicoding.sub2.data.local.entity.TiviesEntity
 import ade.dicoding.sub2.data.model.MovieDetail
 import ade.dicoding.sub2.data.model.Movies
+import ade.dicoding.sub2.data.model.TVDetail
 import ade.dicoding.sub2.data.model.Tivies
 import com.google.gson.Gson
 
+
 class FakeDummy {
-    fun generateMovies(): Movies {
+    fun generateMovies(): MutableList<MoviesEntity> {
         val movies = Gson().fromJson(mockResponseMovie, Movies::class.javaObjectType)
-        return movies
+        val moviesEntity: MutableList<MoviesEntity> = mutableListOf()
+        movies.results?.forEach {
+            it?.apply {
+                moviesEntity.add(
+                    MoviesEntity(
+                        popularity,
+                        posterPath,
+                        id,
+                        backdropPath,
+                        title,
+                        overview,
+                        releaseDate,
+                        0
+                    )
+                )
+            }
+        }
+        return moviesEntity
     }
 
-    fun generateTivies(): Tivies {
+    fun generateTivies(): MutableList<TiviesEntity> {
         val tivies = Gson().fromJson(mockResponseTV, Tivies::class.javaObjectType)
-        return tivies
+        val tiviEntiti: MutableList<TiviesEntity> = mutableListOf()
+        tivies.results?.forEach {
+            it?.apply {
+                tiviEntiti.add(
+                    TiviesEntity(
+                        title,
+                        popularity,
+                        firstAirDate,
+                        backdropPath,
+                        id,
+                        overview,
+                        posterPath,
+                        0
+                    )
+                )
+            }
+        }
+        return tiviEntiti
     }
 
-    fun generateMovieDetail(): MovieDetail {
+    fun generateMovieDetail(): MovieDetailEntity {
         val movie = Gson().fromJson(mockMovieDetail, MovieDetail::class.javaObjectType)
-        return movie
+        val movieDetailEntity: MovieDetailEntity
+        movie.apply {
+            var genr = ""
+            genres?.forEach { genre -> genr = genr + " ${genre?.name}" }
+            movieDetailEntity =
+                MovieDetailEntity(
+                    genr,
+                    homepage,
+                    id,
+                    title,
+                    overview,
+                    popularity,
+                    posterPath,
+                    releaseDate,
+                    status,
+                    tagline,
+                    0
+                )
+        }
+        return movieDetailEntity
     }
 
+    fun generateMovieFavorite(): List<MovieDetailEntity> {
+        val movie = Gson().fromJson(mockMovieDetail, MovieDetail::class.javaObjectType)
+        val movieDetailEntity: MutableList<MovieDetailEntity> = mutableListOf()
+        movie.apply {
+            var genr = ""
+            genres?.forEach { genre -> genr = genr + " ${genre?.name}" }
+            val entiti =
+                MovieDetailEntity(
+                    genr,
+                    homepage,
+                    id,
+                    title,
+                    overview,
+                    popularity,
+                    posterPath,
+                    releaseDate,
+                    status,
+                    tagline,
+                    0
+                )
+            movieDetailEntity.add(entiti)
+            movieDetailEntity.add(entiti)
+        }
+        return movieDetailEntity
+    }
+
+    fun generateTVFavorite(): List<TVDetailEntity> {
+        val tv = Gson().fromJson(mockTVDetail, TVDetail::class.javaObjectType)
+        val tvDetailEntity: MutableList<TVDetailEntity> = mutableListOf()
+        tv.apply {
+            var genr = ""
+            genres?.forEach { genre -> genr = genr + " ${genre?.name}" }
+
+            var crea = ""
+            createdBy?.forEach { genre -> crea = crea + " ${genre?.name}" }
+            val entiti =
+                TVDetailEntity(
+                    crea,
+                    firstAirDate,
+                    genr,
+                    homepage,
+                    id,
+                    lastAirDate,
+                    title,
+                    overview,
+                    popularity,
+                    posterPath,
+                    status,
+                    0
+
+                )
+            tvDetailEntity.add(entiti)
+            tvDetailEntity.add(entiti)
+        }
+        return tvDetailEntity
+    }
+
+    private val mockTVDetail = "{\n" +
+            "  \"backdrop_path\": \"/zIbkxRfoDXj9cOcQSFjB9yDHwj.jpg\",\n" +
+            "  \"created_by\": [\n" +
+            "    {\n" +
+            "      \"id\": 1217333,\n" +
+            "      \"credit_id\": \"52537ce719c29579401a7684\",\n" +
+            "      \"name\": \"Joan Ganz Cooney\",\n" +
+            "      \"gender\": 0,\n" +
+            "      \"profile_path\": null\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"id\": 1217334,\n" +
+            "      \"credit_id\": \"52537ce819c29579401a768c\",\n" +
+            "      \"name\": \"Lloyd Morrisett\",\n" +
+            "      \"gender\": 0,\n" +
+            "      \"profile_path\": null\n" +
+            "    }\n" +
+            "  ],\n" +
+            "  \"episode_run_time\": [\n" +
+            "    54,\n" +
+            "    60\n" +
+            "  ],\n" +
+            "  \"first_air_date\": \"1969-11-10\",\n" +
+            "  \"genres\": [\n" +
+            "    {\n" +
+            "      \"id\": 16,\n" +
+            "      \"name\": \"Animation\"\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"id\": 35,\n" +
+            "      \"name\": \"Comedy\"\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"id\": 10751,\n" +
+            "      \"name\": \"Family\"\n" +
+            "    }\n" +
+            "  ],\n" +
+            "  \"homepage\": \"http://www.sesamestreet.org\",\n" +
+            "  \"id\": 502,\n" +
+            "  \"in_production\": true,\n" +
+            "  \"languages\": [\n" +
+            "    \"es\",\n" +
+            "    \"en\"\n" +
+            "  ],\n" +
+            "  \"last_air_date\": \"2019-12-21\",\n" +
+            "  \"last_episode_to_air\": {\n" +
+            "    \"air_date\": \"2019-12-21\",\n" +
+            "    \"episode_number\": 6,\n" +
+            "    \"id\": 1971178,\n" +
+            "    \"name\": \"Game Day on Sesame Street\",\n" +
+            "    \"overview\": \"Sesame Street has turned into a giant board game called Sesame Stoplight and Elmo, Abby, and Rudy are ready to play. When feeling frustrated during the game, they learn to stop and take a deep breath, think of a plan to solve the problem and then go try their plan. By working together and not giving up, they complete the challenges and win the game.\",\n" +
+            "    \"production_code\": \"\",\n" +
+            "    \"season_number\": 50,\n" +
+            "    \"show_id\": 502,\n" +
+            "    \"still_path\": \"/sWi9bjmymFUX3hHSx234JaRf9sb.jpg\",\n" +
+            "    \"vote_average\": 0.0,\n" +
+            "    \"vote_count\": 0\n" +
+            "  },\n" +
+            "  \"name\": \"Sesame Street\",\n" +
+            "  \"next_episode_to_air\": {\n" +
+            "    \"air_date\": \"2019-12-28\",\n" +
+            "    \"episode_number\": 7,\n" +
+            "    \"id\": 1971179,\n" +
+            "    \"name\": \"Grouch University\",\n" +
+            "    \"overview\": \"\",\n" +
+            "    \"production_code\": \"\",\n" +
+            "    \"season_number\": 50,\n" +
+            "    \"show_id\": 502,\n" +
+            "    \"still_path\": null,\n" +
+            "    \"vote_average\": 0.0,\n" +
+            "    \"vote_count\": 0\n" +
+            "  },\n" +
+            "  \"networks\": [\n" +
+            "    {\n" +
+            "      \"name\": \"PBS\",\n" +
+            "      \"id\": 14,\n" +
+            "      \"logo_path\": \"/d4OH7tMO4ece61s4j7mJWqQejv.png\",\n" +
+            "      \"origin_country\": \"US\"\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\": \"HBO\",\n" +
+            "      \"id\": 49,\n" +
+            "      \"logo_path\": \"/tuomPhY2UtuPTqqFnKMVHvSb724.png\",\n" +
+            "      \"origin_country\": \"US\"\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\": \"National Educational Television\",\n" +
+            "      \"id\": 120,\n" +
+            "      \"logo_path\": \"/pjQ7a6Pplwm6KmR4kunOwoiqYaO.png\",\n" +
+            "      \"origin_country\": \"US\"\n" +
+            "    }\n" +
+            "  ],\n" +
+            "  \"number_of_episodes\": 2898,\n" +
+            "  \"number_of_seasons\": 50,\n" +
+            "  \"origin_country\": [\n" +
+            "    \"US\"\n" +
+            "  ],\n" +
+            "  \"original_language\": \"en\",\n" +
+            "  \"original_name\": \"Sesame Street\",\n" +
+            "  \"overview\": \"On a special inner city street, the inhabitants—human and muppet—teach preschoolers basic educational and social concepts using comedy, cartoons, games, and songs.\",\n" +
+            "  \"popularity\": 44.361,\n" +
+            "  \"poster_path\": \"/rNknh7XQUWvm4j9WeuhUJhT9NP4.jpg\",\n" +
+            "  \"status\": \"Returning Series\",\n" +
+            "  \"type\": \"Scripted\",\n" +
+            "  \"vote_average\": 7.3,\n" +
+            "  \"vote_count\": 96\n" +
+            "}"
     private val mockMovieDetail = "{\n" +
             "  \"adult\": false,\n" +
             "  \"backdrop_path\": \"/dCB7d4l0mfpsISZvr6aPE2z5QF6.jpg\",\n" +

@@ -3,8 +3,11 @@
     <color name="colorPrimary">#3B526B</color>
     <color name="colorPrimaryDark">#FF2F3F51</color>
     <color name="colorAccent">#FF5584</color>
+    <color name="colorAccentSecond">#FF8FAF</color>
     <color name="colorImage">#13C5C6</color>
     <color name="colorText">#3E3E3E</color>
     <color name="colorTextSecondary">#6D767E</color>
     <color name="colorTextTertiary">#EFEFEF</color>
+    <color name="black">#000</color>
+    <color name="white_grey">#f6f6f6</color>
 </resources>

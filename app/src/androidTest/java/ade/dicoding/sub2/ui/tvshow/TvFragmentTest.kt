@@ -5,6 +5,7 @@ import ade.dicoding.sub2.testing.SingleFragmentActivity
 import ade.dicoding.sub2.util.EspressoIdlingResource
 import ade.dicoding.sub2.utils.RecyclerViewItemCountAssertion
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions
@@ -14,6 +15,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
+import org.hamcrest.Matchers
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -56,8 +58,8 @@ class TvFragmentTest {
                 ViewActions.click()
             )
         )
-        onView(ViewMatchers.withText("Shameless"))
-            .check(matches(isDisplayed()))
+        onView(Matchers.allOf(withId(R.id.dtl_title)))
+            .check(matches(ViewMatchers.withText("Shameless")))
 
     }
 }
