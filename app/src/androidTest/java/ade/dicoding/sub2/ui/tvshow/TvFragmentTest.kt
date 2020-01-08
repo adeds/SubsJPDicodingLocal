@@ -5,7 +5,6 @@ import ade.dicoding.sub2.testing.SingleFragmentActivity
 import ade.dicoding.sub2.util.EspressoIdlingResource
 import ade.dicoding.sub2.utils.RecyclerViewItemCountAssertion
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions
