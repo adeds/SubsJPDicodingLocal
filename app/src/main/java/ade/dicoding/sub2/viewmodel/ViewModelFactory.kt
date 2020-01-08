@@ -44,6 +44,7 @@ class ViewModelFactory private constructor(private val mAcademyRepository: TMDBR
                     if (INSTANCE == null) {
                         INSTANCE =
                             Injection.provideRepository(application)?.let { ViewModelFactory(it) }
+//                            Injection.provideRepository(application)?.let { ViewModelFactory(it) }
                     }
                 }
             }

@@ -10,41 +10,45 @@ import ade.dicoding.sub2.data.model.Movies
 import ade.dicoding.sub2.data.model.TVDetail
 import ade.dicoding.sub2.data.model.Tivies
 import ade.dicoding.sub2.data.remote.ApiResponse
-import ade.dicoding.sub2.data.remote.RemoteRepository
+import ade.dicoding.sub2.network.MovieService
 import ade.dicoding.sub2.util.AppExecutors
 import ade.dicoding.sub2.vo.Resource
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 
 class TMDBRepository(
     private val localRepository: LocalRepository?,
-    private val remoteRepository: RemoteRepository?,
+    private val remoteRepository: MovieService,
     private val appExecutors: AppExecutors?
 ) :
     TMDBDataSource {
 
-    override fun movies(): LiveData<Resource<List<MoviesEntity>>>? {
-        return object : NetworkBoundResource<List<MoviesEntity>, Movies?>(appExecutors) {
+    override fun movies(page: Int?): LiveData<Resource<List<MoviesEntity>>>? {
+        return object : NetworkBoundResource<List<MoviesEntity>, Movies>(appExecutors) {
             override fun loadFromDB(): LiveData<List<MoviesEntity>>? {
-                return localRepository?.getAllMovie()
+                return localRepository?.getAllMovie(page)
             }
 
             override fun shouldFetch(data: List<MoviesEntity>?): Boolean? {
                 return data.isNullOrEmpty()
             }
 
-            override fun createCall(): LiveData<ApiResponse<Movies?>>? {
-                return remoteRepository?.getMovies()
+            override fun createCall(): LiveData<ApiResponse<Movies>> {
+                Log.e("page", page.toString())
+                return remoteRepository.getMovie(page)
             }
 
             override fun saveCallResult(data: Movies?) {
+                val movieList = mutableListOf<MoviesEntity>()
                 data?.results?.forEach { result: Movies.Result? ->
                     result?.apply {
                         val moviesEntity =
                             MoviesEntity(
                                 popularity,
                                 posterPath,
+                                data.page,
                                 id,
                                 backdropPath,
                                 title,
@@ -52,12 +56,20 @@ class TMDBRepository(
                                 releaseDate,
                                 0
                             )
-                        localRepository?.insertMovies(moviesEntity)
+                        movieList.add(moviesEntity)
                     }
                 }
+                localRepository?.insertMovies(movieList)
+            }
 
+            override fun onFetchFailed(message: String?) {
+                Log.e("moviesFetchFailed", "$message")
             }
         }.asLiveData()
+    }
+
+    override fun movies(key: String?): LiveData<ApiResponse<Movies>> {
+        return remoteRepository.getMovie(key)
     }
 
     override fun favMovies(sort: String): LiveData<Resource<PagedList<MovieDetailEntity>>> {
@@ -78,8 +90,13 @@ class TMDBRepository(
 
             override fun saveCallResult(data: MovieDetailEntity?) {
             }
+
+            override fun onFetchFailed(message: String?) {
+                Log.e("moviesfavFetchFailed", "$message")
+            }
         }.asLiveData()
     }
+
     override fun favTivies(sort: String): LiveData<Resource<PagedList<TVDetailEntity>>> {
         return object :
             NetworkBoundResource<PagedList<TVDetailEntity>, TVDetailEntity?>(appExecutors) {
@@ -98,11 +115,15 @@ class TMDBRepository(
 
             override fun saveCallResult(data: TVDetailEntity?) {
             }
+
+            override fun onFetchFailed(message: String?) {
+                Log.e("tiviesFavFetchFailed", "$message")
+            }
         }.asLiveData()
     }
 
     override fun tVShow(): LiveData<Resource<List<TiviesEntity>>>? {
-        return object : NetworkBoundResource<List<TiviesEntity>, Tivies?>(appExecutors) {
+        return object : NetworkBoundResource<List<TiviesEntity>, Tivies>(appExecutors) {
             override fun loadFromDB(): LiveData<List<TiviesEntity>>? {
                 return localRepository?.getAllTivi()
             }
@@ -111,8 +132,8 @@ class TMDBRepository(
                 return data.isNullOrEmpty()
             }
 
-            override fun createCall(): LiveData<ApiResponse<Tivies?>>? {
-                return remoteRepository?.getTv()
+            override fun createCall(): LiveData<ApiResponse<Tivies>> {
+                return remoteRepository.getTV()
             }
 
             override fun saveCallResult(data: Tivies?) {
@@ -138,7 +159,7 @@ class TMDBRepository(
     }
 
     override fun movieDetail(id: Int): LiveData<Resource<MovieDetailEntity>> {
-        return object : NetworkBoundResource<MovieDetailEntity, MovieDetail?>(appExecutors) {
+        return object : NetworkBoundResource<MovieDetailEntity, MovieDetail>(appExecutors) {
             override fun loadFromDB(): LiveData<MovieDetailEntity>? {
                 return localRepository?.getMovieDetail(id)
             }
@@ -147,8 +168,8 @@ class TMDBRepository(
                 return data == null
             }
 
-            override fun createCall(): LiveData<ApiResponse<MovieDetail?>>? {
-                return remoteRepository?.getMovieDetail(id)
+            override fun createCall(): LiveData<ApiResponse<MovieDetail>> {
+                return remoteRepository.getMovieDetail(id)
             }
 
             override fun saveCallResult(data: MovieDetail?) {
@@ -176,11 +197,15 @@ class TMDBRepository(
 
                 }
             }
+
+            override fun onFetchFailed(message: String?) {
+                Log.e("moviesDtlFetchFailed", "$message")
+            }
         }.asLiveData()
     }
 
     override fun tVDetail(id: Int): LiveData<Resource<TVDetailEntity>> {
-        return object : NetworkBoundResource<TVDetailEntity, TVDetail?>(appExecutors) {
+        return object : NetworkBoundResource<TVDetailEntity, TVDetail>(appExecutors) {
             override fun loadFromDB(): LiveData<TVDetailEntity>? {
                 return localRepository?.getTVDetail(id)
             }
@@ -189,8 +214,8 @@ class TMDBRepository(
                 return data == null
             }
 
-            override fun createCall(): LiveData<ApiResponse<TVDetail?>>? {
-                return remoteRepository?.getTVDetail(id)
+            override fun createCall(): LiveData<ApiResponse<TVDetail>> {
+                return remoteRepository.getTVDetail(id)
             }
 
             override fun saveCallResult(data: TVDetail?) {
@@ -225,6 +250,9 @@ class TMDBRepository(
                 }
             }
 
+            override fun onFetchFailed(message: String?) {
+                Log.e("tvDtlFetchFailed", "$message")
+            }
         }.asLiveData()
     }
 
@@ -244,7 +272,7 @@ class TMDBRepository(
 
         fun getInstance(
             localRepository: LocalRepository?,
-            remoteData: RemoteRepository?,
+            remoteData: MovieService,
             appExecutors: AppExecutors?
         ): TMDBRepository? {
             if (INSTANCE == null) {

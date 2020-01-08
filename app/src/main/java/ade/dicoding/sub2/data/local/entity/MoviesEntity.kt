@@ -15,6 +15,9 @@ data class MoviesEntity(
     @ColumnInfo(name = "poster_path")
     var posterPath: String? = null,
 
+    @ColumnInfo(name = "page")
+    var page: Int? = null,
+
     @PrimaryKey
     @ColumnInfo(name = "id")
     var id: Int? = null,

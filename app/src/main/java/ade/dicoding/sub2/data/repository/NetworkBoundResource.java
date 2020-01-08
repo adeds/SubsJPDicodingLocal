@@ -31,17 +31,6 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
         });
     }
 
-    protected void onFetchFailed() {
-    }
-
-    protected abstract LiveData<ResultType> loadFromDB();
-
-    protected abstract Boolean shouldFetch(ResultType data);
-
-    protected abstract LiveData<ApiResponse<RequestType>> createCall();
-
-    protected abstract void saveCallResult(RequestType data);
-
     private void fetchFromNetwork(LiveData<ResultType> dbSource) {
 
         LiveData<ApiResponse<RequestType>> apiResponse = createCall();
@@ -54,33 +43,38 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
             result.removeSource(apiResponse);
             result.removeSource(dbSource);
 
-            switch (response.getStatus()) {
-                case SUCCESS:
-                    mExecutors.diskIO().execute(() -> {
+            if (response.isSuccessful()) {
+                mExecutors.diskIO().execute(() -> {
+                    saveCallResult(response.getBody());
 
-                        saveCallResult(response.getBody());
-
-                        mExecutors.mainThread().execute(() ->
-                                result.addSource(loadFromDB(),
-                                        newData -> result.setValue(Resource.success(newData))));
-
-                    });
-                    break;
-
-                case EMPTY:
                     mExecutors.mainThread().execute(() ->
                             result.addSource(loadFromDB(),
                                     newData -> result.setValue(Resource.success(newData))));
 
-                    break;
-                case ERROR:
-                    onFetchFailed();
-                    result.addSource(dbSource, newData ->
-                            result.setValue(Resource.error(response.getMessage(), newData)));
-                    break;
+                });
+            } else if (response.isFailure()) {
+                onFetchFailed(response.getMessage());
+                result.addSource(dbSource, newData ->
+                        result.setValue(Resource.error(response.getMessage(), newData)));
+            } else {
+                mExecutors.mainThread().execute(() ->
+                        result.addSource(loadFromDB(),
+                                newData -> result.setValue(Resource.success(newData))));
             }
+//            }
         });
     }
+
+    protected void onFetchFailed(String message) {
+    }
+
+    protected abstract LiveData<ResultType> loadFromDB();
+
+    protected abstract Boolean shouldFetch(ResultType data);
+
+    protected abstract LiveData<ApiResponse<RequestType>> createCall();
+
+    protected abstract void saveCallResult(RequestType data);
 
     public LiveData<Resource<ResultType>> asLiveData() {
         return result;

@@ -4,6 +4,8 @@ package ade.dicoding.sub2.data.model
 import com.google.gson.annotations.SerializedName
 
 data class Movies(
+    @SerializedName("page")
+    var page:Int? = null,
     @SerializedName("results")
     var results: List<Result?>? = null
 ) {

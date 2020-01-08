@@ -17,7 +17,6 @@ import androidx.paging.DataSource
 import androidx.paging.PagedList
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
-import com.nhaarman.mockitokotlin2.mock
 import junit.framework.Assert.assertEquals
 import org.junit.*
 import org.junit.runner.RunWith
@@ -68,13 +67,13 @@ class TMDBRepositoryTest {
             MutableLiveData()
         dummyCourses.value = movies
 
-        Mockito.`when`(local.getAllMovie()).thenReturn(dummyCourses)
+        Mockito.`when`(local.getAllMovie(page)).thenReturn(dummyCourses)
 
         val result: Resource<List<MoviesEntity>>? =
-            repository.movies()?.let { LiveDataTestUtil.getValue(it) }
+            repository.movies(data)?.let { LiveDataTestUtil.getValue(it) }
 
 
-        Mockito.verify(local, Mockito.times(1)).getAllMovie()
+        Mockito.verify(local, Mockito.times(1)).getAllMovie(page)
 
         Assert.assertNotNull(result)
         Assert.assertEquals(movies.size.toLong(), result?.data?.size?.toLong())

@@ -24,10 +24,10 @@ class FakeTMDBRepository(
 ) :
     TMDBDataSource {
 
-    override fun movies(): LiveData<Resource<List<MoviesEntity>>>? {
+    override fun movies(page: Int?): LiveData<Resource<List<MoviesEntity>>>? {
         return object : NetworkBoundResource<List<MoviesEntity>, Movies?>(appExecutors) {
             override fun loadFromDB(): LiveData<List<MoviesEntity>>? {
-                return localRepository?.getAllMovie()
+                return localRepository?.getAllMovie(page)
             }
 
             override fun shouldFetch(data: List<MoviesEntity>?): Boolean? {

@@ -4,6 +4,7 @@ import ade.dicoding.sub2.R
 import ade.dicoding.sub2.data.local.entity.MovieDetailEntity
 import ade.dicoding.sub2.data.local.entity.MoviesEntity
 import ade.dicoding.sub2.data.local.entity.TVDetailEntity
+import ade.dicoding.sub2.data.local.entity.TiviesEntity
 import ade.dicoding.sub2.util.POSTER_PATH
 import ade.dicoding.sub2.util.loadImageURL
 import ade.dicoding.sub2.util.yesFav
@@ -143,58 +144,35 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_ITEM = "EXTRA_ITEM"
         const val EXTRA_ID_CONTENT = "EXTRA_ID_CONTENT"
         const val EXTRA_IS_MOVIE = "EXTRA_IS_MOVIE"
-        //        const val EXTRA_MOVIE = "EXTRA_IS_MOVIE"
-        fun startMovie(
-            activity: Activity?,
-            entity: MoviesEntity?
-        ) {
+        fun startMovie(activity: Activity?, entity: MoviesEntity?) {
+            activity?.startActivity<DetailActivity>(
+                EXTRA_ITEM to entity?.title,
+                EXTRA_ID_CONTENT to entity?.id,
+                EXTRA_IS_MOVIE to true
+            )
+        }
+
+        fun startMovie(activity: Activity?, entity: MovieDetailEntity?) {
 
             activity?.startActivity<DetailActivity>(
                 EXTRA_ITEM to entity?.title,
                 EXTRA_ID_CONTENT to entity?.id,
                 EXTRA_IS_MOVIE to true
-//                ,
-//                EXTRA_MOVIE to entity
             )
         }
 
-        fun startMovie(
-            activity: Activity?,
-            entity: MovieDetailEntity?
-        ) {
-
-            activity?.startActivity<DetailActivity>(
-                EXTRA_ITEM to entity?.title,
-                EXTRA_ID_CONTENT to entity?.id,
-                EXTRA_IS_MOVIE to true
-//                ,
-//                EXTRA_MOVIE to entity
-            )
-        }
-
-        fun startTivi(
-            activity: Activity?,
-            entity: TVDetailEntity?
-        ) {
-
+        fun startTivi(activity: Activity?, entity: TVDetailEntity?) {
             activity?.startActivity<DetailActivity>(
                 EXTRA_ITEM to entity?.title,
                 EXTRA_ID_CONTENT to entity?.id,
                 EXTRA_IS_MOVIE to false
-//                ,
-//                EXTRA_MOVIE to entity
             )
         }
 
-        fun start(
-            activity: Activity?,
-            item: String,
-            movie: Boolean,
-            id: Int?
-        ) {
+        fun startTivi(activity: Activity?, entity: TiviesEntity?) {
             activity?.startActivity<DetailActivity>(
-                EXTRA_ITEM to item,
-                EXTRA_ID_CONTENT to id,
+                EXTRA_ITEM to entity?.title,
+                EXTRA_ID_CONTENT to entity?.id,
                 EXTRA_IS_MOVIE to false
             )
         }

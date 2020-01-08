@@ -8,8 +8,6 @@ import ade.dicoding.sub2.vo.Resource
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.nhaarman.mockitokotlin2.eq
-import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -45,7 +43,7 @@ class MoviesViewModelTest {
         val dummyCourses: MutableLiveData<Resource<List<MoviesEntity>>> = MutableLiveData()
         dummyCourses.value = resource
 
-        Mockito.`when`(repo.movies()).thenReturn(dummyCourses)
+        Mockito.`when`(repo.movies(data)).thenReturn(dummyCourses)
         val observer = mock(Observer::class.java) as Observer<Resource<List<MoviesEntity>>>
         viewModel.setUsername(NEWEST)
         viewModel.movies.observeForever(observer)

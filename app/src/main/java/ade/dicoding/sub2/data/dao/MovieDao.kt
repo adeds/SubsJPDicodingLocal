@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteQuery
 @Dao
 interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(movies: MoviesEntity)
+    fun insert(movies: List<MoviesEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDetail(moviesDetail: MovieDetailEntity?)
@@ -22,8 +22,8 @@ interface MovieDao {
     @Update
     fun updateMovieDetail(movies: MovieDetailEntity)
 
-    @get:Query("SELECT * from movies_entity")
-    val allMovies: LiveData<List<MoviesEntity>>
+    @Query("SELECT * from movies_entity WHERE page = :page")
+    fun allMovies(page:Int): LiveData<List<MoviesEntity>>
 
     @Transaction
     @Query("SELECT * from moviedetail WHERE id= :idMovie")

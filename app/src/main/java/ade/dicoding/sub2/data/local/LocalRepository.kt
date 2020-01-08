@@ -6,7 +6,6 @@ import ade.dicoding.sub2.data.local.entity.MovieDetailEntity
 import ade.dicoding.sub2.data.local.entity.MoviesEntity
 import ade.dicoding.sub2.data.local.entity.TVDetailEntity
 import ade.dicoding.sub2.data.local.entity.TiviesEntity
-import ade.dicoding.sub2.data.model.*
 import ade.dicoding.sub2.helper.SortUtils
 import ade.dicoding.sub2.util.timeStamp
 import ade.dicoding.sub2.util.yesFav
@@ -15,15 +14,15 @@ import androidx.paging.DataSource
 import androidx.sqlite.db.SimpleSQLiteQuery
 
 class LocalRepository(private val movieDao: MovieDao?, private val tvDao: TVDao?) {
-    fun getAllMovie(): LiveData<List<MoviesEntity>>? {
-        return movieDao?.allMovies
+    fun getAllMovie(page: Int?): LiveData<List<MoviesEntity>>? {
+        return page?.let { movieDao?.allMovies(it) }
     }
 
     fun getMovieDetail(idMovie:Int): LiveData<MovieDetailEntity>? {
         return movieDao?.movieDetail(idMovie)
     }
 
-    fun insertMovies(movies: MoviesEntity) {
+    fun insertMovies(movies: MutableList<MoviesEntity>) {
         movieDao?.insert(movies)
     }
 

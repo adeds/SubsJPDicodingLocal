@@ -38,7 +38,7 @@ class TVShowAdapter(
                 holder.tvDate.text = String.format("Release: %s", firstAirDate)
                 holder.tvRate.text = String.format("Rating %s", popularity)
                 holder.itemView.setOnClickListener { v: View? ->
-                    DetailActivity.start(activity, item.title ?: "", false, id)
+                    DetailActivity.startTivi(activity, item)
 //                    activity?.toast(originalName.toString())
                 }
                 holder.imgPoster.loadImageURL(POSTER_PATH + posterPath)
